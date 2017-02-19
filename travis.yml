@@ -1,0 +1,11 @@
+#travis configuration for coverage testing
+
+language: c
+sudo: false # only for faster builds
+script:
+  - clang -coverage -O0 hello.c -o hello
+  - ./hello
+  - gcov hello.c
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
