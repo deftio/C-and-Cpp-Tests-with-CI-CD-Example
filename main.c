@@ -35,15 +35,76 @@
  */
 
 #include <stdio.h>
+#include "lib.h"
 
-static int t = 1;
+#define S_OK (0)
+#define E_FAIL (-1)
+
+
+/* ************************************************
+	simple test cases for the library functions 
+*/
+int test_ib_and() {
+	
+	/*test cases for this function ... */
+	if (f_ib_and(3,4) != (3&4))
+		return E_FAIL;
+
+	if (f_ib_and(2,7) != (2&7))
+		return E_FAIL;
+
+
+	return S_OK;
+}
+
+int test_ib_or() {
+	if (f_ib_or(3,4) != (3|4)) 
+		return E_FAIL;
+	
+	return S_OK;
+}
+
+int test_cb_xnor() {
+	if (f_cb_xnor(3,4) != (~(3^4))) 
+		return E_FAIL;
+	return S_OK;
+}
+
+
+/* 	************************************************
+	this is a simple test suite.  
+	normally you would run cppUnit or such 
+*/
+int run_tests() {
+	if (E_FAIL == test_ib_and()) {
+		printf("failed test_ib_and()\n");
+		return E_FAIL;
+	}
+
+	if (E_FAIL == test_ib_or()) {
+		printf("failed test_ib_or()\n");
+		return E_FAIL;
+	}
+	
+	if (E_FAIL == test_cb_xnor()){
+		printf("failed test_cb_xnor()\n");
+		return E_FAIL;
+	}
+
+	return S_OK;
+}
 
 int main()
 {
-    if (t)
-        printf("on this line\n");
-    else
-        printf("but not here\n");
+	int result;
+	
+	printf("Running Example tests .. \n");
+	result = run_tests();
 
-    return 0;
+	if (result == S_OK) 
+		printf ("tests passed.\n");
+	else
+		printf ("tests failed.\n");
+
+    return result;
 }

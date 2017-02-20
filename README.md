@@ -1,8 +1,12 @@
-# travis-c example 
+
+# travis-ci Simple Stand Alone Example for C/C++
 
 copyright (C) <2016>  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
 version 1.0 M. A. Chatterjee
- 
+
+[![Build Status](https://travis-ci.org/deftio/travis-ci-cpp-example.png)](https://travis-ci.org/deftio/travis-ci-cpp-example)
+[![Build Status](https://travis-ci.org/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.org/deftio/travis-ci-cpp-example)
+
 ## About travis-c example
 
 travis-ci is a test coverage service common for open source projects.  This repo is just a stand alone example of how to call it for small libraries.

@@ -46,12 +46,14 @@ extern "C"
 
 /** The "libary" begins here  */
 
-int func1 (int x, int y);
+/* integer bitwise AND */
+int  f_ib_and (int x, int y);
 
-int func2 (int x);
+/* integer bitwise OR */
+int  f_ib_or (int x, int y);
 
-char fxnor (char a, char b);
-
+/* char bitwise XNOR */
+char f_cb_xnor (char a, char b);
 
 
 #ifdef __cplusplus

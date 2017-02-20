@@ -37,17 +37,25 @@
 
 #include "lib.h"
 
-/** The "libary" begins here!  */
+/* 
+  The "libary" begins here!  
+  Its just a bunch of simple functions for showing the test environment not any thing 'real'
 
-int func1 (int x, int y) {
-	return x+y+1;
+*/
+
+
+/* integer bitwise AND */
+int f_ib_and (int x, int y) {
+	return x&y;
 }
 
-int func2 (int x) {
-	return  !(x+x);
+/* integer bitwise OR */
+int f_ib_or (int x, int y) {
+	return  x|y;
 }
 
-char fxnor (char a, char b) {
+/* char bitwise XNOR */
+char f_cb_xnor (char a, char b) {
 	return ~(a^b);
 }
 
