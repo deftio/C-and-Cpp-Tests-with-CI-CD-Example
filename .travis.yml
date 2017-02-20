@@ -10,4 +10,4 @@ compiler:
 
 
 # Build steps
-script: make && ./example
+script: make && ./example.out
