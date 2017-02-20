@@ -43,26 +43,35 @@
 
 /* ************************************************
 	simple test cases for the library functions 
+   ************************************************
 */
+
+
+/*   test cases for f_ib_and() function  */
 int test_ib_and() {
 	
-	/*test cases for this function ... */
 	if (f_ib_and(3,4) != (3&4))
 		return E_FAIL;
 
 	if (f_ib_and(2,7) != (2&7))
 		return E_FAIL;
 
+	// un comment me to make this fail!
+	//if ((f_ib_and(2,7) == (2&7))
+	//	return E_FAIL;)
 
 	return S_OK;
 }
 
+/*   test cases for f_ib_or() function  */
 int test_ib_or() {
 	if (f_ib_or(3,4) != (3|4)) 
 		return E_FAIL;
 	
 	return S_OK;
 }
+
+/*   test cases for f_cb_xnor() function  */
 
 int test_cb_xnor() {
 	if (f_cb_xnor(3,4) != (~(3^4))) 
@@ -73,7 +82,8 @@ int test_cb_xnor() {
 
 /* 	************************************************
 	this is a simple test suite.  
-	normally you would run cppUnit or such 
+	normally you would run cppUnit or some other 
+	more general purpose test framework.
 */
 int run_tests() {
 	if (E_FAIL == test_ib_and()) {
@@ -94,6 +104,12 @@ int run_tests() {
 	return S_OK;
 }
 
+
+/* 
+	This main function only runs all the test code.
+    If successful it returns S_OK which is equal to the numerical value of 0.
+ 	Any other value is considered a failure.
+ */
 int main()
 {
 	int result;
@@ -106,5 +122,6 @@ int main()
 	else
 		printf ("tests failed.\n");
 
-    return result;
+    return result;  /* remember the value 0 is considered passing in a travis-ci sense */
+
 }
