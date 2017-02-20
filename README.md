@@ -7,13 +7,12 @@ version 1.0 M. A. Chatterjee
 
 
 
-## About travis-c example
+## About 
 
-travis-ci is a test coverage service common for open source projects.  This repo is just a stand alone example of how to call it for small C/C++ libraries.
+Travis-CI is a test coverage service common for open source projects.  This repo is just a stand alone example of how to call it for small C/C++ libraries.
 
 
 ## Features
-
 
 The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the Travis build project works without all the complexities of a "real" project.
 
@@ -28,7 +27,8 @@ Travis-CI looks in the .travis.yml  (note that is dot travis dot yml) to see how
 Travis-CI then runs the example.out and looks for the exit code from the main() function.   Being a Posix style of system an exit code of zero from example.out is considered passing and hence Travis-ci will then declare the build passing.  If a non zero value is returned travis will declare the build failing.  So to sum up, the primary means for travis knowing whether the test suite passes is getting the proper exit code from the test suite executable which in our case here is running example.out.
 
 
-### FAQ:
+### FAQ:  
+
 Q: What's the point this repo doesn't do anything.  
 A: Exactly!  Its just a simple example of the travis service for test purposes.  I was looking for a simple repo that just had this basic stuff but was having trouble finding one.  
 
