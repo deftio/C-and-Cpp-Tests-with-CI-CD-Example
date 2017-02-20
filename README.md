@@ -19,7 +19,7 @@ The lib.h / lib.c files are broken out as examples of testing an embedded librar
 
 
 
-# How it works
+## How it works
 
 In this demo project there is a C library (could also be C++ etc).  The library code is just a few demo functions which are in the lib.h and lib.c files.  They don't really do anything but allow for simple abstraction of what is necessary to build a larger project.
 
@@ -30,15 +30,15 @@ Travis-CI then looks in the .travis.yml  (note that is dot travis dot yml) to se
 Travis then runs the example.out and looks for the exit code from the main() function.   Being a Posix style of system an exit code of zero from example.out is considered passing and hence Travis-ci will then declare the build passing.  If a non zero value is returned travis will declare the build failing.  So to sum up, the primary means for travis knowing whether the test suite passes is getting the proper exit code from the test suite executable which in our case here is running example.out.
 
 
-FAQ:
-Q: What's the point this repo doesn't do anything.
-A: Exactly!  Its just a simple example of the travis service for test purposes.  I was looking for a simple repo that just had this basic stuff but was having trouble finding one.
+### FAQ:
+Q: What's the point this repo doesn't do anything.  
+A: Exactly!  Its just a simple example of the travis service for test purposes.  I was looking for a simple repo that just had this basic stuff but was having trouble finding one.  
 
-Q: I see the badge says passing can I make fail for simple purposes?
-A: Just clone it modify a commented line in the main.c to make it fail.  Of course there are other ways to make it fail too but this is just for test purposes.
+Q: I see the badge says passing can I make fail for simple purposes?   
+A: Just clone it modify a commented line in the main.c to make it fail.  Of course there are other ways to make it fail too but this is just for test purposes.  
 
-Q: Why isn't there a proper unit test framework?
-A: I just wanted a barebones test of the integration and badge service.  Perhaps in the future I'll add a code coverage example.
+Q: Why isn't there a proper unit test framework?  
+A: I just wanted a barebones test of the integration and badge service.  Perhaps in the future I'll add a code coverage example.  
 
 
 ## License 
