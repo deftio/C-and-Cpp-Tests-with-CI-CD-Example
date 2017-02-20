@@ -109,6 +109,7 @@ int run_tests() {
 	This main function only runs all the test code.
     If successful it returns S_OK which is equal to the numerical value of 0.
  	Any other value is considered a failure.
+ 	
  */
 int main()
 {
