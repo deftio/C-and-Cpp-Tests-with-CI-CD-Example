@@ -16,5 +16,5 @@ example.out: $(OBJ)
 	gcc -o $@ $^ $(CFLAGS) -lm -lncurses -Os 
 
 clean :
-	rm  *.o  *.asm  *.lst *.sym *.rel *.s -f
+	rm  *.o  *.asm  *.lst *.sym *.rel *.s *.gc* -f
 
