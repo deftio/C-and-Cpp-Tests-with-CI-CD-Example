@@ -26,6 +26,27 @@ Travis-CI looks in the .travis.yml  (note that is dot travis dot yml) to see how
 
 Travis-CI then runs the example.out and looks for the exit code from the main() function.   Being a Posix style of system an exit code of zero from example.out is considered passing and hence Travis-ci will then declare the build passing.  If a non zero value is returned travis will declare the build failing.  So to sum up, the primary means for travis knowing whether the test suite passes is getting the proper exit code from the test suite executable which in our case here is running example.out.
 
+## Code Coverage
+Code coverage is achieved using gcov from the gcc test suite.   The example.out test program is compiled with the flags -ftest-coverage -fprofile-arcs.  To see the code coverage run gcov:
+
+```
+make clean
+make
+./example.out
+gcov lib.c
+```
+
+which will generate the file
+
+```
+lib.c.gcov
+```
+
+This can be viewed in any text editor.
+
+Lines that appear with #### have never been run.    
+
+
 
 ### FAQ:  
 
@@ -36,7 +57,7 @@ Q: I see the badge says passing can I make fail for simple purposes?
 A: Just clone it modify a commented line in the main.c to make it fail.  Of course there are other ways to make it fail too but this is just for test purposes.  
 
 Q: Why isn't there a proper unit test framework?  
-A: I just wanted a barebones test of the integration and badge service.  Perhaps in the future I'll add a code coverage example.  
+A: I just wanted a barebones test of the integration and badge service. 
 
 
 ## License 

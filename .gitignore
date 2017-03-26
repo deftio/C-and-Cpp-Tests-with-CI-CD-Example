@@ -37,4 +37,10 @@
 *.asm
 *.rel
 *.s
+
+# code coverage files
+*.gcov
+*.gcda
+*.gcno
+
 dioci-example.out

@@ -44,20 +44,40 @@
 */
 
 
+
 /* integer bitwise AND */
-int f_ib_and (int x, int y) {
+int  op_and 	(int x, int y) {
 	return x&y;
 }
 
 /* integer bitwise OR */
-int f_ib_or (int x, int y) {
-	return  x|y;
+int  op_or 		(int x, int y) {
+	return x|y;
 }
 
-/* char bitwise XNOR */
-char f_cb_xnor (char a, char b) {
-	return ~(a^b);
+/* integer bitwise XOR */
+int  op_xor 	(int x, int y) {
+	return x^y;
 }
 
+/* integer bitwise XNOR */
+int  op_xnor 	(int x, int y) {
+	return ~(x^y);
+}
+
+/* integer add 			 */
+int  op_add 	(int x, int y) {
+	return x+y;
+}
+
+/* integer sub 			 */
+int  op_sub 	(int x, int y) {
+	return x-y;
+}
+
+/* integer mul 			 */
+int  op_mul 	(int x, int y) {
+	return x*y;
+}
 
 
