@@ -3,6 +3,22 @@ language: c
 
 sudo: false # only for faster builds
 
+install:
+- cd ${TRAVIS_BUILD_DIR}
+# install latest LCOV (1.9 was failing for me) [1]
+
+- wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.11.orig.tar.gz
+- tar xf lcov_1.11.orig.tar.gz
+- sudo make -C lcov-1.11/ install
+
+# install lcov to coveralls conversion + upload tool
+- gem install coveralls-lcov
+
+
+before_script: (optional: for paranoiacs only)
+- cd ${TRAVIS_BUILD_DIR}
+- lcov --directory . --zerocounters
+
 # Compiler selection
 compiler:
   - clang
@@ -10,4 +26,15 @@ compiler:
 
 
 # Build steps
-script: make && ./example.out
+script: 
+  - cd ${TRAVIS_BUILD_DIR}
+  - make && ./example.out
+
+
+after_success:
+- cd ${TRAVIS_BUILD_DIR}
+- lcov --directory . --capture --output-file coverage.info # capture coverage info
+- lcov --remove coverage.info 'tests/*' '/usr/*' --output-file coverage.info # filter out system and test code
+- lcov --list coverage.info # debug before upload
+- coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info # uploads to coveralls
+
