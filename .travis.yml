@@ -1,7 +1,7 @@
 #travis configuration for coverage testing
 language: c
 
-sudo: false # only for faster builds
+#sudo: false # only for faster builds
 
 install:
 - cd ${TRAVIS_BUILD_DIR}
