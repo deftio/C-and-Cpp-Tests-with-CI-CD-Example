@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.org/deftio/travis-ci-cpp-example)
 [![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
 # Travis-CI Simple Stand Alone Example for C/C++
 
@@ -10,7 +11,7 @@ version 1.0 M. A. Chatterjee
 
 ## About 
 
-Travis-CI is a test coverage service common for open source projects.  This repo is just a stand alone example of how to call it for small C/C++ libraries.
+Travis-CI is a test coverage service common for open source projects.  This repo is just a stand alone example of how to call it for small C/C++ libraries
 
 
 ## Features
@@ -33,7 +34,7 @@ Code coverage is achieved using gcov from the gcc test suite.   The example.out 
 ```
 make clean
 make
-./example.out
+./test-library.out
 gcov lib.c
 ```
 

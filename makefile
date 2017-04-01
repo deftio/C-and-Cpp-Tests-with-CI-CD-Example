@@ -7,12 +7,12 @@
 CC=gcc
 CFLAGS=-I. -Wall -ftest-coverage -fprofile-arcs 
 DEPS = lib.h
-OBJ  = lib.o main.o
+OBJ  = lib.o test-library.o
                   
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) 
 
-example.out: $(OBJ)
+test-library.out: $(OBJ)
 	gcc -o $@ $^ $(CFLAGS) -lm -lncurses -Os 
 
 clean :
