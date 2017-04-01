@@ -28,7 +28,7 @@ compiler:
 # Build steps
 script: 
   - cd ${TRAVIS_BUILD_DIR}
-  - make && ./example.out
+  - make && ./test-library.out
 
 
 after_success:
