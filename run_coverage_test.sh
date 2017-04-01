@@ -9,7 +9,7 @@ make clean
 make 
 
 # run the example.out program ... with test coverage (see makefile for flags)
-./example.out
+./test-library.out
 
 # gcov is the gcc suite test coverage program.  We're interested in the coverage
 # the lib.c file.  

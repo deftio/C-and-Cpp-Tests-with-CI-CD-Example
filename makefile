@@ -5,9 +5,9 @@
 # this is done with the flags  -ftest-coverage -fprofile-arcs 
 # see run_coverage_test.sh to see how to call code coverage tests        
 CC=gcc
-CFLAGS=-I. -Wall -ftest-coverage -fprofile-arcs 
-DEPS = lib.h
-OBJ  = lib.o test-library.o
+CFLAGS = -I. -Wall -ftest-coverage -fprofile-arcs 
+DEPS   = lib.h
+OBJ    = lib.o test-library.o
                   
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) 
@@ -16,5 +16,5 @@ test-library.out: $(OBJ)
 	gcc -o $@ $^ $(CFLAGS) -lm -lncurses -Os 
 
 clean :
-	rm  *.o  *.asm  *.lst *.sym *.rel *.s *.gc* -f
+	rm  *.o  *.asm  *.lst *.sym *.rel *.s *.gc* -f *.info
 
