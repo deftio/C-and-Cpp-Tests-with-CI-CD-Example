@@ -1,23 +1,123 @@
 [![Build Status](https://travis-ci.org/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.org/deftio/travis-ci-cpp-example)
 [![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
-[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
-# Travis-CI Simple Stand Alone Example for C/C++
+# Simple Example for C/C++ Testing
+
+This repo covers setting up a basic testing suite with github badges for a C/C++ library.  Its not meant to be deep tutorial on testing but just cover some basics of setting up unit tests, coverage tests, and continuous integration (in this case using Travis-CI).  The repo doesn't have a lot of code - there is a simple library which is tested for coverage and integration.  
+
+### Motivation
+
+I just wanted to make a small standalone test project to see tools and workflow for C language testing.
+
 
 copyright (C) <2016>  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
 version 1.0 M. A. Chatterjee
 
 
 
-## About 
+## Features
 
-Travis-CI is a test coverage service common for open source projects.  This repo is just a stand alone example of how to call it for small C/C++ libraries
+The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the Travis build project works without all the complexities of a "real" project.
+
+
+## How it works
+
+In this demo project there is a C library (could also be C++ etc).  The library code is just a few demo functions which are in the lib.h and lib.c files.  They don't really do anything but allow for simple abstraction of what is necessary to build a larger project.  This repo and project are meant to provide a quick overview of testing and how to get build badges working on Github.
+
+
+
+
+### Quick Overview of Testing
+
+Installing google test suite (a unit test framework)  -- could have used other test frameworks such as CppUnit or etc.
+
+Common Testing "Questions" about a project:
+* Does it run as intended?  (is it funcitonally correct)
+* Does it have side effects when running? (are resources tied up such as ports blocked, thread contention?)
+* Are all the possible permutations of execution tested? (code coverage)
+* How much memory or resources are used? (is memmory efficiently used?  Is memory freed correctly after use?)
+* Does it exit gracefully? (are any resources requested released before the code exits?)
+
+
+
+### Unit Testing 
+Unit Testing is a practice of writting small tests to see that piece of code, typically a full module or library, passes a set of tests to make sure it runs as intended.  The simple unit tests are done after writing function.  We then make a small program (the Unit test program) which calls our new function with as many different example parameters as we think are appropriate to make sure it works correctly.  If the results returned match the expected results we can say the function passes the test.  If the results for a given set of parameters don't agree we call an assertion (usually via a special ASSERT type macro) which records the failure and attempts to keep running then test in our test program.  The goal is to be able to craft a set of these tests which test all the possible paths of execution in our code and passes all the test.  
+
+Note that its not the goal to create a test that passes every possible permutation of the input parameters - as this could be an impossibly large number or variations even for just a few parameters.  This idea of testing all the possible paths of exeuction is called code coverage.  Testing code coverage is done with tools which see if the test program has successfully "challenged" the target library code by examing whether each execution path (or line of code) has been run.  For example if there is a function like this:
+
+```
+int add5ifGreaterThan2 (int a) {
+	int r;
+
+	if (a>2)
+		r = a + 5;
+	else
+		r = a;
+
+	return r;
+}
+```
+
+Our test program for add5ifGreaterThan2() needs to supply values of a that are both less and great than 2 so both paths of the if statement 
+```
+	if (a<2)
+```
+
+are tested.
+
+We do this with test code such as this:
+
+```
+	//code in test program ...
+	ASSERT (add5ifGreaterThan2(1) == 1)   // supplies value of 'a' that tests the if (a<2) case
+	ASSERT (add5ifGreaterThan2(3) == 8)   // supplies value of 'a' that tests the if (a>2) case
+
+```
+
+Of course this example is very simple but it gives a general idea of how the parameters need to be chosen to make sure both sides of the if clause in the example are run by the test program.
+
+
+#### More info
+
+Here is a link to the wikipedia article for more depth on unit testing practice and history: [https://en.wikipedia.org/wiki/Unit_testing](Wikipedia: Unit Testing).
+
+### Frameworks
+To make Unit Testing easier to automate, unit testing frameworks have been written to help test results from function calls, gather statistics about passing/failing test cases, and 
+
+Unit testing frameworks are available in most languages and many have names like JUnit (for Java) or (PyUnit for Python etc).  In C/C++ there are many excellent frameworks available many of which are open source.  Here we'll be using the well regard googletest (an open source unit test framework).  A few other well known C++ testing frameworks are shown in the list below.  Many provide features well beyond unit testing and some work in special enviroments such as small microcontrollers or embedded systems.
+
+
+* [CppUTest](http://cpputest.github.io/) - A unit test framework for C++
+* [Boost C++ Unit Test Framework](http://www.boost.org/doc/libs/1_35_0/libs/test/doc/components/utf/index.html) - This is the test framework used by the popular Boost library for C++
+* [Typemock](https://www.typemock.com/) - a commercial Test Package
+* [Cantata](http://www.qa-systems.com/tools/cantata) - a commercial Test Package
+* [Google Test](https://github.com/google/googletest) - we'll be using this here.  Google Test is a free opensource framework using special macros for asserting when code doesn't perform as expected.
+* [Catch](https://github.com/philsquared/Catch) - Catch is a test framework for C
+
+
+### Installing Google Test 
+We'll be using Google Test (called gtest) here so first we need to install it.  
+
+Here is the link to the project source
+[https://github.com/google/googletest](https://github.com/google/googletest)
+
+On Ubuntu Linux you can install gtest using this command.  If you are developing on another sytem refer to the documentation link for install procedures.  Other than installing, all of the commands and test procedures we'll be using later will be the same (whether Windows / MacOS / POSIX / Linux).
+
+```
+sudo apt-get install libxorg-gtest-dev
+```
+
+You can read more about the Google Test project here:
+[https://github.com/google/googletest/blob/master/googletest/docs/Primer.md](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)  
+
+
+===========================
 
 
 ## Features
 
 The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the Travis build project works without all the complexities of a "real" project.
-
 
 
 ## How it works
