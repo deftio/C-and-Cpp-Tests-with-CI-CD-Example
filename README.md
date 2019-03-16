@@ -104,8 +104,26 @@ Here is the link to the project source
 
 On Ubuntu Linux you can install gtest using this command.  If you are developing on another sytem refer to the documentation link for install procedures.  Other than installing, all of the commands and test procedures we'll be using later will be the same (whether Windows / MacOS / POSIX / Linux).
 
+
 ```
-sudo apt-get install libxorg-gtest-dev
+sudo apt-get install libgtest-dev
+
+sudo apt-get install cmake # install cmake
+
+cd /usr/src/gtest
+
+sudo cmake CMakeLists.txt
+
+sudo make
+
+sudo cp *.a /usr/lib
+
+sudo mkdir /usr/local/lib/googletest
+
+sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
+
+sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
+
 ```
 
 You can read more about the Google Test project here:
