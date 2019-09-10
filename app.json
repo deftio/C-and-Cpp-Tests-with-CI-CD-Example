@@ -1,0 +1,10 @@
+{
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "find ~",
+        "whoami-test": "whoami"
+      }
+    }
+  }
+}
