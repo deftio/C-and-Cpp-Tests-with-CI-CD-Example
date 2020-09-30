@@ -7,13 +7,11 @@
 This repo covers setting up a basic testing suite with github badges for a C/C++ library.  Its not meant to be deep tutorial on testing but just cover some basics of setting up unit tests, coverage tests, and continuous integration (in this case using Travis-CI).  The repo doesn't have a lot of code - there is a simple library which is tested for coverage and integration.  
 
 ### Motivation
+I just wanted to make a small standalone test project to see tools and workflow for C (or C++) language testing.  
 
-I just wanted to make a small standalone test project to see tools and workflow for C language testing.
 
-
-copyright (C) <2016>  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
+copyright (C) 2016-  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
 version 1.0 M. A. Chatterjee
-
 
 
 ## Features
@@ -46,7 +44,7 @@ Unit Testing is a practice of writting small tests to see that piece of code, ty
 
 Note that its not the goal to create a test that passes every possible permutation of the input parameters - as this could be an impossibly large number or variations even for just a few parameters.  This idea of testing all the possible paths of exeuction is called code coverage.  Testing code coverage is done with tools which see if the test program has successfully "challenged" the target library code by examing whether each execution path (or line of code) has been run.  For example if there is a function like this:
 
-```
+```C
 int add5ifGreaterThan2 (int a) {
 	int r;
 
@@ -60,7 +58,7 @@ int add5ifGreaterThan2 (int a) {
 ```
 
 Our test program for add5ifGreaterThan2() needs to supply values of a that are both less and great than 2 so both paths of the if statement 
-```
+```C
 	if (a<2)
 ```
 
@@ -68,7 +66,7 @@ are tested.
 
 We do this with test code such as this:
 
-```
+```C
 	//code in test program ...
 	ASSERT (add5ifGreaterThan2(1) == 1)   // supplies value of 'a' that tests the if (a<2) case
 	ASSERT (add5ifGreaterThan2(3) == 8)   // supplies value of 'a' that tests the if (a>2) case
@@ -105,7 +103,7 @@ Here is the link to the project source
 On Ubuntu Linux you can install gtest using this command.  If you are developing on another sytem refer to the documentation link for install procedures.  Other than installing, all of the commands and test procedures we'll be using later will be the same (whether Windows / MacOS / POSIX / Linux).
 
 
-```
+```bash
 sudo apt-get install libgtest-dev
 
 sudo apt-get install cmake # install cmake
@@ -149,7 +147,7 @@ Travis-CI then runs the example.out and looks for the exit code from the main() 
 ## Code Coverage
 Code coverage is achieved using gcov from the gcc test suite.   The example.out test program is compiled with the flags -ftest-coverage -fprofile-arcs.  To see the code coverage run gcov:
 
-```
+```bash
 make clean
 make
 ./test-library.out
@@ -158,7 +156,7 @@ gcov lib.c
 
 which will generate the file
 
-```
+```bash
 lib.c.gcov
 ```
 
