@@ -28,21 +28,23 @@ In this demo project there is a C library (could also be C++ etc).  The library 
 
 ### Quick Overview of Testing
 
-Installing google test suite (a unit test framework)  -- could have used other test frameworks such as CppUnit or etc.
+There are many different phases of testing.  Here are a few areas but phrased as questions.
 
 Common Testing "Questions" about a project:
-* Does it run as intended?  (is it funcitonally correct)
-* Does it have side effects when running? (are resources tied up such as ports blocked, thread contention?)
-* Are all the possible permutations of execution tested? (code coverage)
-* How much memory or resources are used? (is memmory efficiently used?  Is memory freed correctly after use?)
+* Does it run as intended?  (is it funcitonally correct, does it do what its supposed to do?)
+* Does it have side effects when running? (are resources tied up such as ports blocked, thread contention?  Are other programs or services affected unintentionally?)
+* Are all the possible permutations of execution tested? (code coverage, Is every piece of code - every if-then statement etc tested?)
+* How much memory or resources are used? (is memmory efficiently used?  Is memory freed correctly after use? When the program is complete does it leave things intact?)
 * Does it exit gracefully? (are any resources requested released before the code exits?)
 
 
-
 ### Unit Testing 
+
 Unit Testing is a practice of writting small tests to see that piece of code, typically a full module or library, passes a set of tests to make sure it runs as intended.  The simple unit tests are done after writing function.  We then make a small program (the Unit test program) which calls our new function with as many different example parameters as we think are appropriate to make sure it works correctly.  If the results returned match the expected results we can say the function passes the test.  If the results for a given set of parameters don't agree we call an assertion (usually via a special ASSERT type macro) which records the failure and attempts to keep running then test in our test program.  The goal is to be able to craft a set of these tests which test all the possible paths of execution in our code and passes all the test.  
 
-Note that its not the goal to create a test that passes every possible permutation of the input parameters - as this could be an impossibly large number or variations even for just a few parameters.  This idea of testing all the possible paths of exeuction is called code coverage.  Testing code coverage is done with tools which see if the test program has successfully "challenged" the target library code by examing whether each execution path (or line of code) has been run.  For example if there is a function like this:
+Note that its not the goal to create a test that passes every possible permutation of the input parameters - as this could be an impossibly large number or variations even for just a few parameters.  This idea of testing all the possible paths of exeuction is called code coverage.  Testing code coverage is done with tools which see if the test program has successfully "challenged" the target library code by examing whether each execution path (or line of code) has been run.  
+
+For example if there is a function like this:
 
 ```C
 int add5ifGreaterThan2 (int a) {
@@ -68,12 +70,12 @@ We do this with test code such as this:
 
 ```C
 	//code in test program ...
-	ASSERT (add5ifGreaterThan2(1) == 1)   // supplies value of 'a' that tests the if (a<2) case
-	ASSERT (add5ifGreaterThan2(3) == 8)   // supplies value of 'a' that tests the if (a>2) case
+	ASSERT (add5ifGreaterThan2(1) == 1)   // supplies value of 'a' that tests the if (a<2) case and tests for a result
+	ASSERT (add5ifGreaterThan2(3) == 8)   // supplies value of 'a' that tests the if (a>2) case and tests for a result
 
 ```
 
-Of course this example is very simple but it gives a general idea of how the parameters need to be chosen to make sure both sides of the if clause in the example are run by the test program.
+Of course this example is very simple but it gives a general idea of how the parameters need to be chosen to make sure both sides of the if clause in the example are run by the test program.  The ASSERT macro checks whether the result is logically true.  If it is not then it triggers an error process.  Depending on the testing framework used different types of logging and output can be examined if the statement fails.
 
 
 #### More info
@@ -100,6 +102,8 @@ We'll be using Google Test (called gtest) here so first we need to install it.
 Here is the link to the project source
 [Google Test](https://github.com/google/googletest)
 
+Examples here are built using Ubuntu Linux, but should apply to most other operating systems.
+
 On Ubuntu Linux you can install gtest using this command.  If you are developing on another sytem refer to the documentation link for install procedures.  Other than installing, all of the commands and test procedures we'll be using later will be the same (whether Windows / MacOS / POSIX / Linux).
 
 
@@ -124,8 +128,7 @@ sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 
 ```
 
-You can read more about the Google Test project here:
-[Test Primer.md](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)  
+You can read more about the Google Test project here: [Testing Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)  
 
 
 ===========================
@@ -136,9 +139,14 @@ You can read more about the Google Test project here:
 The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the Travis build project works without all the complexities of a "real" project.
 
 
-## How it works
+## Testing vs Continuous Integration
 
 In this demo project there is a C library (could also be C++ etc).  The library code is just a few demo functions which are in the lib.h and lib.c files.  They don't really do anything but allow for simple abstraction of what is necessary to build a larger project.
+
+
+Once you've made unit tests, and gotten your code to run using the local test suite the next step starts.  How does an *outsider* know your code passes tests?  This is where continuous integration (CI) starts.  CI uses services (such as Travis-CI, Circle-CI, Jenkins and many others) to automatically run your test suites and then report the result.  When a CI program runs your test suite it can be configured to accept or reject your code based on the tests passing.  This in turn can be used to automatically deploy your code. This is called Continuous Deployment (CD) or pipelines.  CD and pipelines are beyond this repo and example.
+
+## Using Travis-CI as an example of build-badge and CI
 
 Travis-CI looks in the .travis.yml  (note that is dot travis dot yml) to see how to run the code.  In this case it first calls make which compiles lib.c and example.c in to lib.o and example.o and then links them to produce the final executable called example.out.    If you look inside the file example.c  you will see there are few hand written test cases.  They are not meant to be a complete example of how to write test cases just a simple view of how the tests will be run in general.   The main() function calls local function run_tests() which in turn calls each individual test case.   Rather than link in a larger test case environment such as cppUnit etc there is a trivial set of test functions, one for each function in the lib.c library.  If run_tests() is able to run all the tests successfully it will return to main() with a value of S_OK else it will return some failure code.  This value is then returned from the main() program in example.out on exit.
 
