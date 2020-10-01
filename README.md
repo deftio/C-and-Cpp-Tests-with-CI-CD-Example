@@ -78,7 +78,7 @@ Of course this example is very simple but it gives a general idea of how the par
 
 #### More info
 
-Here is a link to the wikipedia article for more depth on unit testing practice and history: [https://en.wikipedia.org/wiki/Unit_testing](Wikipedia: Unit Testing).
+Here is a link to the wikipedia article for more depth on unit testing practice and history: [Unit_testing](https://en.wikipedia.org/wiki/Unit_testing).
 
 ### Frameworks
 To make Unit Testing easier to automate, unit testing frameworks have been written to help test results from function calls, gather statistics about passing/failing test cases, and 
@@ -98,7 +98,7 @@ Unit testing frameworks are available in most languages and many have names like
 We'll be using Google Test (called gtest) here so first we need to install it.  
 
 Here is the link to the project source
-[https://github.com/google/googletest](https://github.com/google/googletest)
+[Google Test](https://github.com/google/googletest)
 
 On Ubuntu Linux you can install gtest using this command.  If you are developing on another sytem refer to the documentation link for install procedures.  Other than installing, all of the commands and test procedures we'll be using later will be the same (whether Windows / MacOS / POSIX / Linux).
 
@@ -125,7 +125,7 @@ sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 ```
 
 You can read more about the Google Test project here:
-[https://github.com/google/googletest/blob/master/googletest/docs/Primer.md](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)  
+[Test Primer.md](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)  
 
 
 ===========================
