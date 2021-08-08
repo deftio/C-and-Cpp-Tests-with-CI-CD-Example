@@ -10,14 +10,9 @@ This repo covers setting up a basic testing suite with github badges for a C/C++
 I just wanted to make a small standalone test project to see tools and workflow for C (or C++) language testing.  
 
 
-<<<<<<< HEAD
 
 copyright (C) <2016 and onward>  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
-version 1.0.1 (updated for travis-ci.com transition) M. A. Chatterjee
-=======
-copyright (C) 2016-  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
-version 1.0 M. A. Chatterjee
->>>>>>> b54e3a8266c4ce85a4ab86b162e789d653132718
+version 1.0.2 (updated for travis-ci.com transition) M. A. Chatterjee
 
 
 ## Features
