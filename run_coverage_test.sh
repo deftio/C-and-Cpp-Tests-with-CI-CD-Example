@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#this script calls the code coverage testing program gcov (part of the gcc suite)
+#this shell script calls the code coverage testing program gcov (part of the gcc suite)
+#you can run each command on your own at the command line
 
 #fist clean all object files
 make clean
