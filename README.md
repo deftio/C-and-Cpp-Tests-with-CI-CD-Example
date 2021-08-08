@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.org/deftio/travis-ci-cpp-example)
+[![Build Status](https://travis-ci.com/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.com/deftio/travis-ci-cpp-example)
 [![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
@@ -11,8 +11,8 @@ This repo covers setting up a basic testing suite with github badges for a C/C++
 I just wanted to make a small standalone test project to see tools and workflow for C language testing.
 
 
-copyright (C) <2016>  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
-version 1.0 M. A. Chatterjee
+copyright (C) <2016 and onward>  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
+version 1.0.1 (updated for travis-ci.com transition) M. A. Chatterjee
 
 
 

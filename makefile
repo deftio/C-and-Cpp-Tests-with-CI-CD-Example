@@ -1,4 +1,4 @@
-# make file for dioci posix tests (simple interpreter for embedded systems)
+# makefile for  posix tests (simple test lib coverage for embedded systems)
 # @author M A Chatterjee <deftio [at] deftio [dot] com>
 
 # test coverage is achieved usding gcov (part of gcc suite)
