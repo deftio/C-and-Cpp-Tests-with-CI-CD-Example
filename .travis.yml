@@ -19,6 +19,10 @@ before_script:
 - cd ${TRAVIS_BUILD_DIR}
 - lcov --directory . --zerocounters
 
+os:
+  - linux
+  - osx
+
 # Compiler selection
 compiler:
   - clang
