@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
-# Simple Example for C/C++ Testing
+# Simple Example for C/C++ Testing with CI/CD
 
 This repo covers setting up a basic testing suite with github badges for a C/C++ library.  Its not meant to be deep tutorial on testing but just cover some basics of setting up unit tests, coverage tests, and continuous integration (in this case using Travis-CI).  The repo doesn't have a lot of code - there is a simple library which is tested for coverage and integration.  
 
