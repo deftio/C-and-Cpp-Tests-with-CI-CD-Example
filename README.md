@@ -4,15 +4,11 @@
 
 # Simple Example for C/C++ Testing with CI/CD
 
-This repo covers setting up a basic testing suite with github badges for a C/C++ library.  Its not meant to be deep tutorial on testing but just cover some basics of setting up unit tests, coverage tests, and continuous integration (in this case using Travis-CI).  The repo doesn't have a lot of code - there is a simple library which is tested for coverage and integration.  
+This repo covers setting up a basic testing suite with github badges for a C/C++ library.  Its not meant to be deep tutorial on testing but just cover some basics of setting up unit tests, coverage tests, and continuous integration (in this case using either GitHub Actions or Travis-CI).  The repo doesn't have a lot of code - there is a simple library which is tested for coverage and integration.  
 
 ### Motivation
 I just wanted to make a small standalone test project to see tools and workflow for C (or C++) language testing.  
 
-
-
-copyright (C) <2016 and onward>  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
-version 1.0.2 (updated for travis-ci.com transition) M. A. Chatterjee
 
 
 ## Features
@@ -215,3 +211,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+
+copyright (C) <2016 and onward>  <M. A. Chatterjee>  <deftio [at] deftio [dot] com>
+version 1.0.3 (added github actions support)
+version 1.0.2 (updated for travis-ci.com transition) M. A. Chatterjee
