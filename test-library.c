@@ -1,5 +1,5 @@
 /*
-  @main.c - simple test file example file for travis-ci example library
+  @main.c - simple test file example file for continuous integration example library
 
   @copy Copyright (C) <2012>  <M. A. Chatterjee>
   @author M A Chatterjee <deftio [at] deftio [dot] com>
@@ -7,7 +7,7 @@
   This file contains header defintions for travis-ci code testing example.
 
   @license: 
-	Copyright (c) 2011-2016, M. A. Chatterjee <deftio at deftio dot com>
+	Copyright (c) 2016 and later, M. A. Chatterjee <deftio at deftio dot com>
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
