@@ -27,11 +27,15 @@ Testing helps tell us if the software is working as intended.  This means unders
 
 * Does it run as intended?
 * Does it have side effects when running?
-** Are resources tied up such as ports blocked, thread contention?  
-** Are other programs or services affected unintentionally?
+  * Are resources tied up such as ports blocked, thread contention?  
+  * Are other programs or services affected unintentionally?
 * Are all possible execution paths tested?  (coverage)
 * How much memory or resources are used? Is memory freed correctly / are their leaks?
 * Does it exit gracefully?
+* Is the performance good enough?
+* Is it reliable?
+
+These are just a few of questions that testing can answer.  Each of these questions can take us on different paths to find the answer.  A good start is with unit testing.
 
 ### Unit Testing
 
@@ -101,6 +105,7 @@ You can read more about the Google Test project here: [Testing Primer](https://g
 Once you've written unit tests and run them locally, CI services (such as Travis-CI, GitHub Actions, Circle-CI, Jenkins, and others) can automatically run your test suites and report the results **every time you check in**. CI can be configured to accept or reject your code based on the tests passing, and can even deploy your code automatically if it passes all the tests.  This is called Continuous Deployment, or CD.
 
 ### Using Travis-CI as a CI Provider
+
 Travis-CI
 Travis-CI looks in the .travis.yml file to see how to run the code. It compiles lib.c and example.c into lib.o and example.o, and then links them to produce the executable example.out. The test suite is run, and the exit code is used to determine if the build passes.
 
