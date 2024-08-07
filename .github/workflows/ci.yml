@@ -39,7 +39,3 @@ jobs:
       run: |
         lcov --list coverage.info
 
-    - name: Upload coverage to Coveralls
-      run: |
-        gem install coveralls-lcov
-        coveralls-lcov coverage.info
