@@ -3,26 +3,21 @@
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
 ![Github Actions Ci](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml/badge.svg)
 
-# Simple Example for C/C++ Testing with CI/CD
+# Simple Example for C/C++ Tests with Continuous Integration (CI)
 
 This repo covers setting up a basic testing suite with github badges for a C/C++ library.  Its not meant to be deep tutorial on testing but just cover some basics of setting up unit tests, coverage tests, and continuous integration (in this case using either GitHub Actions or Travis-CI).  The repo doesn't have a lot of code - there is a simple library which is tested for coverage and integration.  
 
-### Motivation
+## Motivation
+
 I just wanted to make a small standalone test project to show continuous integration tools and workflow for C (or C++) language testing.  
-
-
 
 ## Features
 
 The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the CI process works without all the complexities of a "real" project.
 
-
 ## How it works
 
 In this demo project there is a C library (could also be C++ etc).  The library code is just a few demo functions which are in the lib.h and lib.c files.  They don't really do anything but allow for simple abstraction of what is necessary to build a larger project.  This repo and project are meant to provide a quick overview of testing and how to get build badges working on Github.
-
-
-
 
 ### Quick Overview of Testing
 
@@ -134,21 +129,30 @@ You can read more about the Google Test project here: [Testing Primer](https://g
 
 ## Features
 
-The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the Travis build project works without all the complexities of a "real" project.
-
+The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the Travis build or Github Actions works, but without all the complexities of a "real" project.
 
 ## Testing vs Continuous Integration
 
 In this demo project there is a C library (could also be C++ etc).  The library code is just a few demo functions which are in the lib.h and lib.c files.  They don't really do anything but allow for simple abstraction of what is necessary to build a larger project.
 
-
-Once you've made unit tests, and gotten your code to run using the local test suite the next step starts.  How does an *outsider* know your code passes tests?  This is where continuous integration (CI) starts.  CI uses services (such as Travis-CI, Circle-CI, Jenkins and many others) to automatically run your test suites and then report the result.  When a CI program runs your test suite it can be configured to accept or reject your code based on the tests passing.  This in turn can be used to automatically deploy your code. This is called Continuous Deployment (CD) or pipelines.  CD and pipelines are beyond this repo and example.
+Once you've made unit tests, and gotten your code to run using the local test suite the next step starts.  How does an *outsider* know your code passes tests?  This is where continuous integration (CI) starts.  CI uses services (such as Travis-CI, Github Actions, Circle-CI, Jenkins and many others) to automatically run your test suites and then report the result.  When a CI program runs your test suite it can be configured to accept or reject your code based on the tests passing.  This in turn can be used to automatically deploy your code. This is called Continuous Deployment (CD) or pipelines.  CD and pipelines are beyond the scope of this repo and example.
 
 ## Using Travis-CI as an example of build-badge and CI
 
-Travis-CI looks in the .travis.yml  (note that is dot travis dot yml) to see how to run the code.  In this case it first calls make which compiles lib.c and example.c in to lib.o and example.o and then links them to produce the final executable called example.out.    If you look inside the file example.c  you will see there are few hand written test cases.  They are not meant to be a complete example of how to write test cases just a simple view of how the tests will be run in general.   The main() function calls local function run_tests() which in turn calls each individual test case.   Rather than link in a larger test case environment such as cppUnit etc there is a trivial set of test functions, one for each function in the lib.c library.  If run_tests() is able to run all the tests successfully it will return to main() with a value of S_OK else it will return some failure code.  This value is then returned from the main() program in example.out on exit.
+### Travis-CI
+
+Travis-CI looks in the .travis.yml  (note that is dot travis dot yml) to see how to run the code.  In this case it first calls make which compiles lib.c and example.c in to lib.o and example.o and then links them to produce the final executable called example.out.
+
+If you look inside the file example.c  you will see there are few hand written test cases.  They are not meant to be a complete example of how to write test cases just a simple view of how the tests will be run in general.   The main() function calls local function run_tests() which in turn calls each individual test case.   Rather than link in a larger test case environment such as cppUnit etc there is a trivial set of test functions, one for each function in the lib.c library.  If run_tests() is able to run all the tests successfully it will return to main() with a value of S_OK else it will return some failure code.  This value is then returned from the main() program in example.out on exit.
 
 Travis-CI then runs the example.out and looks for the exit code from the main() function.   Being a Posix style of system an exit code of zero from example.out is considered passing and hence Travis-ci will then declare the build passing.  If a non zero value is returned travis will declare the build failing.  So to sum up, the primary means for travis knowing whether the test suite passes is getting the proper exit code from the test suite executable which in our case here is running example.out.
+
+Github Actions works in similar way.  When the code is pushed to github (main branch in our case), github triggers and action to look at the file here:
+
+```bash
+./github/workflows/ci.yml
+```
+This very similar to the .travis.yml.  It tells the github actions runner to load the correct environment, build the code, run the test script, and then report back success or failure.  When github has completed running the ci.yml tasks it reports sucess or failure as shown in the badge.
 
 ## Code Coverage
 Code coverage is achieved using gcov from the gcc test suite.   The example.out test program is compiled with the flags -ftest-coverage -fprofile-arcs.  To see the code coverage run gcov:
