@@ -1,5 +1,4 @@
 /*
-
   @main.c - simple test file example file for travis-ci example library
 
   @copy Copyright (C) <2012>  <M. A. Chatterjee>

@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.com/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.com/deftio/travis-ci-cpp-example)
+[![Build Status](https://app.travis-ci.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example.svg?token=Pc8RELtY2RwRuTT1tezA&branch=master)](https://app.travis-ci.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example)
 [![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
-[![Github Actions Ci](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml/badge.svg)]
+![Github Actions Ci](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml/badge.svg)
 
 # Simple Example for C/C++ Testing with CI/CD
 
@@ -29,7 +29,7 @@ In this demo project there is a C library (could also be C++ etc).  The library 
 There are many different phases of testing.  Here are a few areas but phrased as questions.
 
 Common Testing "Questions" about a project:
-* Does it run as intended?  (is it funcitonally correct, does it do what its supposed to do?)
+* Does it run as intended? (is it functionally correct / does it do what its supposed to do?)
 * Does it have side effects when running? (are resources tied up such as ports blocked, thread contention?  Are other programs or services affected unintentionally?)
 * Are all the possible permutations of execution tested? (code coverage, Is every piece of code - every if-then statement etc tested?)
 * How much memory or resources are used? (is memmory efficiently used?  Is memory freed correctly after use? When the program is complete does it leave things intact?)
