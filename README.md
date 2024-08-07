@@ -1,7 +1,7 @@
 [![Build Status](https://app.travis-ci.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example.svg?token=Pc8RELtY2RwRuTT1tezA&branch=master)](https://app.travis-ci.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example)
 [![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
-[![Github Actions Ci](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/workflows/ci.yml/badge.svg)](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml/badge.svg)
+[![Github Actions Ci](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml/badge.svg)](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml/badge.svg)
 
 # Simple Example for C/C++ Tests with Continuous Integration (CI)
 
