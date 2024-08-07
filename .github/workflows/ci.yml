@@ -8,44 +8,38 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        compiler: [clang, gcc]
-
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
-    - name: Install LCOV
+    - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y lcov
+        sudo apt-get install -y gcc lcov libncurses5-dev
 
-    - name: Install coveralls-lcov
-      run: |
-        gem install coveralls-lcov
-
-    - name: Set up compiler ${{ matrix.compiler }}
-      run: sudo apt-get install -y ${{ matrix.compiler }}
-
-    - name: Zero counters
-      run: lcov --directory . --zerocounters
-
-    - name: Build and run tests
+    - name: Build project
       run: |
         make
+
+    - name: Run tests
+      run: |
         ./test-library.out
 
     - name: Capture coverage info
-      run: lcov --directory . --capture --output-file coverage.info
+      run: |
+        lcov --directory . --capture --output-file coverage.info
 
     - name: Filter out system and test code
-      run: lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' --output-file coverage.info
+      run: |
+        lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' --output-file coverage.info
 
     - name: List coverage info
-      run: lcov --list coverage.info
+      run: |
+        lcov --list coverage.info
 
     - name: Upload coverage to Coveralls
-      run: coveralls-lcov coverage.info
+      run: |
+        gem install coveralls-lcov
+        coveralls-lcov coverage.info

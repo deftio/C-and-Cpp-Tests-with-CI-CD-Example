@@ -1,19 +1,20 @@
 [![Build Status](https://travis-ci.com/deftio/travis-ci-cpp-example.svg?branch=master)](https://travis-ci.com/deftio/travis-ci-cpp-example)
 [![Coverage Status](https://coveralls.io/repos/github/deftio/travis-ci-cpp-example/badge.svg?branch=master)](https://coveralls.io/github/deftio/travis-ci-cpp-example?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
+[![Github Actions Ci](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml/badge.svg)]
 
 # Simple Example for C/C++ Testing with CI/CD
 
 This repo covers setting up a basic testing suite with github badges for a C/C++ library.  Its not meant to be deep tutorial on testing but just cover some basics of setting up unit tests, coverage tests, and continuous integration (in this case using either GitHub Actions or Travis-CI).  The repo doesn't have a lot of code - there is a simple library which is tested for coverage and integration.  
 
 ### Motivation
-I just wanted to make a small standalone test project to see tools and workflow for C (or C++) language testing.  
+I just wanted to make a small standalone test project to show continuous integration tools and workflow for C (or C++) language testing.  
 
 
 
 ## Features
 
-The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the Travis build project works without all the complexities of a "real" project.
+The lib.h / lib.c files are broken out as examples of testing an embedded library.   Most of the projects I work on are for embedded systems so I wanted a way to get a build badge for these embedded projects.  Since many of those compilers and environments are not on Linux I wanted just a simple abstraction of how the CI process works without all the complexities of a "real" project.
 
 
 ## How it works
