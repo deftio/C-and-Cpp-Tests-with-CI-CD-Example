@@ -1,7 +1,7 @@
 [![Language](https://img.shields.io/badge/Language-C%2FC%2B%2B-blue.svg)](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example)
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example)
 [![CI](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml/badge.svg)](https://github.com/deftio/C-and-Cpp-Tests-with-CI-CD-Example/actions/workflows/ci.yml)
-[![Coverage](https://codecov.io/gh/deftio/C-and-Cpp-Tests-with-CI-CD-Example/branch/master/graph/badge.svg)](https://codecov.io/gh/deftio/C-and-Cpp-Tests-with-CI-CD-Example)
+[![Coverage Status](https://coveralls.io/repos/github/deftio/C-and-Cpp-Tests-with-CI-CD-Example/badge.svg?branch=master)](https://coveralls.io/github/deftio/C-and-Cpp-Tests-with-CI-CD-Example?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
 # C/C++ Testing with CI/CD Example
