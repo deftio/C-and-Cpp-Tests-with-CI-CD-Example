@@ -42,5 +42,35 @@
 *.gcov
 *.gcda
 *.gcno
+*.info
+coverage.info
+coverage/
 
+# Specific project files
 dioci-example.out
+test-library.out
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claude Code configuration
+.claude/
+
+# CMake build directories and files
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.cmake
+CTestTestfile.cmake
+Testing/
+*.cmake

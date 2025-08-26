@@ -27,15 +27,34 @@ jobs:
       run: |
         ./test-library.out
 
+    - name: Generate coverage report
+      run: |
+        gcov lib.c
+        
     - name: Capture coverage info
       run: |
-        lcov --directory . --capture --output-file coverage.info
+        lcov --directory . --capture --output-file coverage.info --ignore-errors unused,unsupported
 
     - name: Filter out system and test code
       run: |
-        lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' --output-file coverage.info
+        lcov --remove coverage.info 'tests/*' '/usr/*' 'test-library*' --output-file coverage.info --ignore-errors unused,unsupported
 
     - name: List coverage info
       run: |
-        lcov --list coverage.info
+        lcov --list coverage.info --ignore-errors unused,unsupported
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.info
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+        token: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: Upload coverage to Coveralls
+      uses: coverallsapp/github-action@v2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./coverage.info
 
